@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-		echo “Fetching code from : ${GITHUB_REPO}"
+                echo "Fetching code from: ${GITHUB_REPO}"
                 echo "Stage 1: Build - Using Maven as the build automation tool to compile and package the code."
             }
         }
@@ -20,13 +20,12 @@ pipeline {
             }
             post {
                 always {
-			emailext(
-				subject : “Status of Test Stage : ${currentBuild.result}”,
-				body : “This test stage has been completed : ${currentBuild.result}”,
-				attachLog : true,
-				to : “${EMAIL}"
-			)
-
+                    emailext(
+                        subject: "Status of Test Stage: ${currentBuild.result}",
+                        body: "This test stage has been completed: ${currentBuild.result}",
+                        attachLog: true,
+                        to: "${EMAIL}"
+                    )
                 }
             }
         }
@@ -43,13 +42,12 @@ pipeline {
             }
             post {
                 always {
-			emailext(
-				subject : “Status of Security Scan Stage : ${currentBuild.result}”,
-				body : “This security scan stage has been completed : ${currentBuild.result}”,
-				attachLog : true,
-				to : “${EMAIL}"
-			)
-                  
+                    emailext(
+                        subject: "Status of Security Scan Stage: ${currentBuild.result}",
+                        body: "This security scan stage has been completed: ${currentBuild.result}",
+                        attachLog: true,
+                        to: "${EMAIL}"
+                    )
                 }
             }
         }
@@ -64,15 +62,14 @@ pipeline {
             steps {
                 echo "Stage 6: Integration Tests on Staging - Additional integration tests are run in the staging environment to simulate a production environment."
             }
-		post {
+            post {
                 always {
-			emailext(
-				subject : “Status of Integration Tests on Staging : ${currentBuild.result}”,
-				body : “This Integration Tests on Staging has been completed : ${currentBuild.result}”,
-				attachLog : true,
-				to : “${EMAIL}"
-			)
-                  
+                    emailext(
+                        subject: "Status of Integration Tests on Staging: ${currentBuild.result}",
+                        body: "This Integration Tests on Staging has been completed: ${currentBuild.result}",
+                        attachLog: true,
+                        to: "${EMAIL}"
+                    )
                 }
             }
         }
