@@ -1,2 +1,2 @@
-# 6.1C - IT
+# 6.1C - Professional Practice in IT
 Creating a Jenkins Pipeline with GitHub Integration
